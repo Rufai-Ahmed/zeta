@@ -1,0 +1,192 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Bluetooth Headphones",
+    "slug": "wireless-bluetooth-headphones",
+    "description": "Premium quality wireless headphones with noise cancellation and 30-hour battery life.",
+    "price": 300000,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",
+    "category": "Electronics",
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 128,
+    "features": [
+      "Active Noise Cancellation",
+      "30-hour battery life",
+      "Quick charge (3 hours from 15 min)",
+      "Bluetooth 5.0 connectivity",
+      "Premium sound quality"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Smart Fitness Watch",
+    "slug": "smart-fitness-watch",
+    "description": "Advanced fitness tracking with heart rate monitoring, GPS, and smartphone integration.",
+    "price": 450000,
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop",
+    "category": "Electronics",
+    "inStock": true,
+    "rating": 4.2,
+    "reviews": 89,
+    "features": [
+      "Heart rate monitoring",
+      "Built-in GPS",
+      "Water resistant up to 50m",
+      "Sleep tracking",
+      "Smartphone notifications"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Organic Coffee Beans",
+    "slug": "organic-coffee-beans",
+    "description": "Premium single-origin coffee beans, ethically sourced and freshly roasted.",
+    "price": 37500,
+    "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=400&fit=crop",
+    "category": "Food & Beverages",
+    "inStock": true,
+    "rating": 4.8,
+    "reviews": 234,
+    "features": [
+      "Single-origin beans",
+      "Ethically sourced",
+      "Freshly roasted",
+      "Rich flavor profile",
+      "1 lb bag"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Minimalist Leather Wallet",
+    "slug": "minimalist-leather-wallet",
+    "description": "Handcrafted genuine leather wallet with RFID blocking technology.",
+    "price": 75000,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop",
+    "category": "Accessories",
+    "inStock": true,
+    "rating": 4.6,
+    "reviews": 156,
+    "features": [
+      "Genuine leather construction",
+      "RFID blocking technology",
+      "Slim profile design",
+      "Multiple card slots",
+      "Handcrafted quality"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Wireless Charging Pad",
+    "slug": "wireless-charging-pad",
+    "description": "Fast wireless charging pad compatible with all Qi-enabled devices.",
+    "price": 60000,
+    "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=400&fit=crop",
+    "category": "Electronics",
+    "inStock": false,
+    "rating": 4.3,
+    "reviews": 67,
+    "features": [
+      "Qi wireless charging",
+      "Fast charging support",
+      "LED indicator",
+      "Non-slip surface",
+      "Universal compatibility"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Ergonomic Office Chair",
+    "slug": "ergonomic-office-chair",
+    "description": "Professional office chair with lumbar support and adjustable height.",
+    "price": 495000,
+    "image": "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=400&fit=crop",
+    "category": "Furniture",
+    "inStock": true,
+    "rating": 4.4,
+    "reviews": 78,
+    "features": [
+      "Lumbar support",
+      "Adjustable height",
+      "Breathable mesh back",
+      "360-degree swivel",
+      "Durable construction"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Stainless Steel Water Bottle",
+    "slug": "stainless-steel-water-bottle",
+    "description": "Insulated stainless steel water bottle that keeps drinks cold for 24 hours.",
+    "price": 45000,
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=400&fit=crop",
+    "category": "Lifestyle",
+    "inStock": true,
+    "rating": 4.7,
+    "reviews": 312,
+    "features": [
+      "Double-wall insulation",
+      "Keeps cold for 24 hours",
+      "Leak-proof design",
+      "BPA-free materials",
+      "Easy-clean wide mouth"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Bluetooth Portable Speaker",
+    "slug": "bluetooth-portable-speaker",
+    "description": "Compact portable speaker with 360-degree sound and waterproof design.",
+    "price": 120000,
+    "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop",
+    "category": "Electronics",
+    "inStock": true,
+    "rating": 4.1,
+    "reviews": 145,
+    "features": [
+      "360-degree sound",
+      "Waterproof IPX7 rating",
+      "12-hour battery life",
+      "Bluetooth 5.0",
+      "Compact design"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Reading Glasses",
+    "slug": "reading-glasses",
+    "description": "Stylish reading glasses with anti-blue light coating and comfortable frames.",
+    "price": 52500,
+    "image": "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=400&fit=crop",
+    "category": "Accessories",
+    "inStock": true,
+    "rating": 4.0,
+    "reviews": 92,
+    "features": [
+      "Anti-blue light coating",
+      "Comfortable lightweight frames",
+      "Scratch-resistant lenses",
+      "Multiple strength options",
+      "Stylish design"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Bamboo Cutting Board",
+    "slug": "bamboo-cutting-board",
+    "description": "Eco-friendly bamboo cutting board with juice groove and antimicrobial properties.",
+    "price": 30000,
+    "image": "https://images.unsplash.com/photo-1594736797933-d0101ba68295?w=400&h=400&fit=crop",
+    "category": "Kitchen",
+    "inStock": true,
+    "rating": 4.9,
+    "reviews": 267,
+    "features": [
+      "Sustainable bamboo construction",
+      "Juice groove design",
+      "Antimicrobial properties",
+      "Easy to clean",
+      "Knife-friendly surface"
+    ]
+  }
+]
