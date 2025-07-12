@@ -104,10 +104,18 @@ export class CheckoutComponent extends DestroyAbleComponent implements OnInit {
         return;
       }
 
+
+      const amount = Math.round(cart.total * 100);
+      if (!Number.isInteger(amount) || amount <= 0) {
+        this.isProcessing = false;
+        this.toastService.showToast('Invalid amount for payment', 'error');
+        return;
+      }
+
       const handler = PaystackPop.setup({
         key: environment.paystackPublicKey,
         email: formData.email!,
-        amount: cart.total * 100,
+        amount: amount,
         currency: 'NGN',
         metadata: {
           custom_fields: [
@@ -151,6 +159,6 @@ export class CheckoutComponent extends DestroyAbleComponent implements OnInit {
   }
 
   private generateOrderId(): string {
-    return `ORD-${Date.now()}-${Math.random().toString(36).slice(2, 11 ).toUpperCase()}`;
+    return `ORD-${Date.now()}-${Math.random().toString(36).slice(2, 11).toUpperCase()}`;
   }
 }

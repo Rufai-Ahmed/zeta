@@ -1,13 +1,15 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
   <div class="mb-8">
-    <h1 class="text-3xl font-bold text-gray-900 mb-2">Checkout</h1>
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Checkout</h1>
   </div>
 
   @if(cart$ | async; as cart) {
   <div class="lg:grid lg:grid-cols-12 lg:gap-8">
     <div class="lg:col-span-8">
-      <div class="bg-white rounded-lg shadow-sm border p-6">
-        <h2 class="text-lg font-semibold text-gray-900 mb-6">Shipping Information</h2>
+      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-sm border dark:border-gray-700 p-6">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+          Shipping Information
+        </h2>
         <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()" class="space-y-6">
           <div class="grid grid-cols-1 mb-6 md:grid-cols-2 gap-6">
             <zt-input
@@ -72,8 +74,8 @@
       </div>
     </div>
     <div class="lg:col-span-4 mt-6 lg:mt-0">
-      <div class="bg-white rounded-lg shadow-sm border p-6">
-        <h2 class="text-lg font-semibold text-gray-900 mb-4">Order Summary</h2>
+      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-sm border dark:border-gray-700 p-6">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Order Summary</h2>
         <div class="space-y-3 mb-6">
           @for(item of cart.items; track item.product.id) {
           <div class="flex items-center space-x-3">
@@ -83,28 +85,32 @@
               class="w-12 h-12 object-cover rounded"
             />
             <div class="flex-1 min-w-0">
-              <p class="text-sm font-medium text-gray-900 truncate">{{ item.product.name }}</p>
-              <p class="text-sm text-gray-500">Qty: {{ item.quantity }}</p>
+              <p class="text-sm font-medium text-gray-900 dark:text-white truncate">
+                {{ item.product.name }}
+              </p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">Qty: {{ item.quantity }}</p>
             </div>
-            <p class="text-sm font-medium text-gray-900">
+            <p class="text-sm font-medium text-gray-900 dark:text-white">
               ₦{{ (item.product.price * item.quantity).toLocaleString() }}
             </p>
           </div>
           }
         </div>
-        <div class="border-t pt-4 space-y-3">
+        <div class="border-t dark:border-gray-700 pt-4 space-y-3">
           <div class="flex justify-between text-sm">
-            <span class="text-gray-600">Subtotal</span>
-            <span class="font-medium">₦{{ cart.subtotal.toLocaleString() }}</span>
+            <span class="text-gray-600 dark:text-gray-300">Subtotal</span>
+            <span class="font-medium text-gray-900 dark:text-white"
+              >₦{{ cart.subtotal.toLocaleString() }}</span
+            >
           </div>
           <div class="flex justify-between text-sm">
-            <span class="text-gray-600">Shipping</span>
-            <span class="font-medium">Free</span>
+            <span class="text-gray-600 dark:text-gray-300">Shipping</span>
+            <span class="font-medium text-gray-900 dark:text-white">Free</span>
           </div>
-          <div class="border-t pt-3">
+          <div class="border-t dark:border-gray-700 pt-3">
             <div class="flex justify-between text-base font-medium">
-              <span>Total</span>
-              <span>₦{{ cart.total.toLocaleString() }}</span>
+              <span class="text-gray-900 dark:text-white">Total</span>
+              <span class="text-gray-900 dark:text-white">₦{{ cart.total.toLocaleString() }}</span>
             </div>
           </div>
         </div>
