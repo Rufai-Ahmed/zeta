@@ -1,0 +1,16 @@
+@if (message) {
+<div class="bg-red-50 border border-red-200 rounded-lg p-4">
+  <div class="flex items-center">
+    <mat-icon color="warn" class="mr-2">error</mat-icon>
+    <span class="text-red-700">{{ message }}</span>
+  </div>
+  @if (retryAction) {
+  <button
+    (click)="retryAction()"
+    class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
+  >
+    Try Again
+  </button>
+  }
+</div>
+}

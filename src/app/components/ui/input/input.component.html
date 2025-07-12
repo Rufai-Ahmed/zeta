@@ -1,0 +1,29 @@
+<div class="w-full">
+  @if(label) {
+  <label class="block text-sm font-medium text-gray-700 dark:text-text-secondary mb-2">{{ label }}</label>
+  }
+  @if(type === 'select') {
+  <select
+    [value]="value"
+    (change)="handleSelectChange($event)"
+    [disabled]="disabled"
+    class="w-full px-3 py-2 border border-gray-300 dark:border-border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-surface text-gray-900 dark:text-text-primary"
+  >
+    @for(option of options; track option.value) {
+    <option [value]="option.value">{{ option.label }}</option>
+    }
+  </select>
+  } @if(type !== 'select') {
+  <input
+    [type]="type"
+    [placeholder]="placeholder"
+    [value]="value"
+    (input)="handleInput($event)"
+    [disabled]="disabled"
+    class="w-full px-3 py-2 border border-gray-300 dark:border-border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-surface text-gray-900 dark:text-text-primary placeholder-gray-500 dark:placeholder-gray-400"
+  />
+  }
+  @if(errorMessage) {
+  <div class="text-red-600 dark:text-red-400 text-xs mt-1">{{ errorMessage }}</div>
+  }
+</div>

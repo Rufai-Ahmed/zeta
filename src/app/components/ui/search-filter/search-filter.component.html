@@ -1,0 +1,99 @@
+<div
+  class="bg-white dark:bg-surface rounded-lg shadow-sm border border-gray-200 dark:border-border p-6 mb-6"
+>
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-lg font-semibold text-gray-900 dark:text-text-primary">Search & Filters</h2>
+    <zt-button color="warn" (click)="clearFilters()" class="text-sm" icon="clear">
+      Clear All
+    </zt-button>
+  </div>
+
+  <form [formGroup]="filterForm" class="space-y-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <zt-input
+        label="Search Products"
+        type="text"
+        placeholder="Search by name, description, or category..."
+        formControlName="search"
+        icon="search"
+      ></zt-input>
+
+      <zt-input
+        label="Category"
+        type="select"
+        formControlName="category"
+        [options]="categoryOptions"
+      ></zt-input>
+    </div>
+
+    <div class="space-y-2">
+      <label class="text-sm font-medium text-gray-700 dark:text-text-secondary">Price Range</label>
+      @if(priceRange$ | async; as priceRange) {
+      <div class="px-2">
+        <mat-slider
+          [min]="priceRange.min"
+          [max]="priceRange.max"
+          [step]="1000"
+          class="w-full"
+          (valueChange)="onPriceRangeChange($event)"
+        >
+          <input matSliderStartThumb formControlName="minPrice" />
+          <input matSliderEndThumb formControlName="maxPrice" />
+        </mat-slider>
+        <div class="flex justify-between text-sm text-gray-500 dark:text-text-secondary mt-1">
+          <span>₦{{ priceRange.min.toLocaleString() }}</span>
+          <span>₦{{ priceRange.max.toLocaleString() }}</span>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <zt-input
+        label="Sort By"
+        type="select"
+        formControlName="sortBy"
+        [options]="sortByOptions"
+      ></zt-input>
+
+      <zt-input
+        label="Order"
+        type="select"
+        formControlName="sortOrder"
+        [options]="sortOrderOptions"
+      ></zt-input>
+
+      <div class="flex items-center">
+        <mat-checkbox formControlName="inStock" color="primary"> In Stock Only </mat-checkbox>
+      </div>
+    </div>
+
+    @if(queryParams$ | async; as params) {
+    <div class="flex flex-wrap gap-2">
+      @if(params.search) {
+      <mat-chip color="primary" selected>
+        Search: "{{ params.search }}"
+        <mat-icon matChipRemove>close</mat-icon>
+      </mat-chip>
+      } @if(params.category) {
+      <mat-chip color="primary" selected>
+        Category: {{ params.category }}
+        <mat-icon matChipRemove>close</mat-icon>
+      </mat-chip>
+      } @if(params.minPrice || params.maxPrice) {
+      <mat-chip color="primary" selected>
+        Price: ₦{{ params.minPrice?.toLocaleString() || '0' }} - ₦{{
+          params.maxPrice?.toLocaleString() || '∞'
+        }}
+        <mat-icon matChipRemove>close</mat-icon>
+      </mat-chip>
+      } @if(params.inStock === 'true') {
+      <mat-chip color="primary" selected>
+        In Stock Only
+        <mat-icon matChipRemove>close</mat-icon>
+      </mat-chip>
+      }
+    </div>
+    }
+  </form>
+</div>

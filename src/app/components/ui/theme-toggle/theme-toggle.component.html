@@ -1,0 +1,14 @@
+<button
+  mat-icon-button
+  (click)="toggleTheme()"
+  class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+  [attr.aria-label]="(theme$ | async) === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+>
+  @if(theme$ | async; as theme) {
+  @if(theme === 'dark') {
+  <mat-icon>light_mode</mat-icon>
+  } @if(theme === 'light') {
+  <mat-icon>dark_mode</mat-icon>
+  }
+  }
+</button> 

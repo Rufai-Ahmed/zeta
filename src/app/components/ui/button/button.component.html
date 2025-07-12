@@ -1,0 +1,15 @@
+<button
+  mat-raised-button
+  [color]="color"
+  [disabled]="disabled || loading"
+  [type]="type"
+  (click)="handleClick($event)"
+  class="inline-flex items-center justify-center"
+>
+  @if(loading) {
+  <mat-icon class="animate-spin mr-2">autorenew</mat-icon>
+  } @else if(icon) {
+  <mat-icon class="mr-2">{{ icon }}</mat-icon>
+  }
+  <ng-content></ng-content>
+</button>
