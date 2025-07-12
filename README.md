@@ -15,17 +15,20 @@ Mini-Commerce is a client-side e-commerce application that provides a complete s
 ## 🎨 Design Approach
 
 ### Layout & Responsiveness
+
 - **Mobile-First**: Designed for mobile devices first, then scaled up for tablets and desktops
 - **Grid System**: Utilized Tailwind CSS's responsive grid system for product listings
 - **Flexible Components**: Reusable UI components that adapt to different screen sizes
 
 ### Color Scheme & Typography
+
 - **Primary Colors**: Blue-based palette (blue-600, blue-700) for actions and links
 - **Neutral Colors**: Gray scale for text and backgrounds ensuring good readability
 - **Typography**: Inter font family for clean, modern text presentation
 - **Visual Hierarchy**: Clear distinction between headings, body text, and interactive elements
 
 ### User Experience
+
 - **Intuitive Navigation**: Simple header with cart indicator and clear routing
 - **Loading States**: Spinner animations during data fetching
 - **Error Handling**: User-friendly error messages with retry options
@@ -35,23 +38,28 @@ Mini-Commerce is a client-side e-commerce application that provides a complete s
 ## 🛠️ Tools & Techniques
 
 ### Core Technologies
+
 - **Angular 17**: Latest version with standalone components
 - **TypeScript (Strict Mode)**: Zero `any` types, full type safety
 - **Tailwind CSS**: Utility-first CSS framework for rapid styling
 - **RxJS**: Reactive programming for state management and data flows
 
 ### State Management
+
 - **BehaviorSubject Pattern**: Used for cart and product state management
 - **localStorage Integration**: Persistent cart and product data across sessions
 - **Reactive Data Flow**: Observable patterns for real-time UI updates
 
 ### Architecture Patterns
+
 - **Standalone Components**: Modern Angular 17 approach, no NgModules
 - **Service-Based Architecture**: Separation of concerns with dedicated services
+- **SEO Service Pattern**: Centralized SEO management with dynamic meta tags
 - **Reactive Forms**: Angular reactive forms for checkout functionality
 - **Route Guards**: (Ready for implementation) Authentication and navigation protection
 
 ### Development Tools
+
 - **Angular CLI**: Project scaffolding and build optimization
 - **ESLint**: Code quality and consistency enforcement
 - **Prettier**: Code formatting and style consistency
@@ -61,36 +69,52 @@ Mini-Commerce is a client-side e-commerce application that provides a complete s
 ## 🔍 SEO Strategy
 
 ### Meta Tags & Open Graph
-- **Title & Description**: Descriptive meta tags for better search visibility
-- **Open Graph Protocol**: Social media sharing optimization
-- **Twitter Cards**: Enhanced Twitter sharing experience
+
+- **Dynamic Meta Tags**: Angular Title and Meta services for page-specific SEO
+- **Open Graph Protocol**: Complete OG tags for social media sharing
+- **Twitter Cards**: Enhanced Twitter sharing with proper image and description
+- **Canonical URLs**: Dynamic canonical links to prevent duplicate content
+
+### Structured Data & Rich Snippets
+
+- **JSON-LD Implementation**: Product structured data for rich search results
+- **Organization Schema**: Company information for search engines
+- **Product Schema**: Price, availability, ratings, and reviews in search results
+- **Dynamic Structured Data**: Automatically generated based on product content
 
 ### Performance Optimization
+
 - **Lazy Loading**: Route-based code splitting for faster initial load
 - **Image Optimization**: Responsive images with proper alt attributes
 - **Bundle Optimization**: Angular's build optimizer for production builds
 - **Caching Strategy**: localStorage for offline-first product browsing
+- **PWA Support**: Web app manifest for mobile app-like experience
 
 ### Technical SEO
+
 - **Semantic HTML**: Proper heading hierarchy and document structure
-- **Structured Data**: Ready for JSON-LD implementation
+- **Robots.txt**: Search engine crawling instructions
+- **Sitemap Generation**: Dynamic XML sitemap with all product URLs
 - **Mobile Optimization**: Responsive design and mobile-first approach
 - **Core Web Vitals**: Optimized for LCP, FID, and CLS metrics
 
 ## 🚨 Error Handling Strategy
 
 ### Global Error Handling
+
 - **Error Service**: Centralized error management and user feedback
 - **HTTP Interceptors**: (Ready for implementation) Global HTTP error handling
 - **Retry Logic**: Automatic retry mechanisms for failed requests
 
 ### User Experience
+
 - **Toast Notifications**: Non-intrusive success/error messages
 - **Loading States**: Clear indication of ongoing operations
 - **Fallback UI**: Graceful degradation when data is unavailable
 - **Form Validation**: Real-time validation with helpful error messages
 
 ### Error Recovery
+
 - **Persistent Storage**: Cart data recovery after page refresh
 - **Retry Actions**: User-initiated retry for failed operations
 - **Error Logging**: Console logging for debugging and monitoring
@@ -99,11 +123,13 @@ Mini-Commerce is a client-side e-commerce application that provides a complete s
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - npm (v9 or higher)
 - Angular CLI (v17)
 
 ### Installation
+
 ```bash
 # Install dependencies
 npm install
@@ -119,3 +145,19 @@ npm test
 
 # Run linting
 npm run lint
+
+## 🌐 Production Deployment
+
+### Live Demo
+- **URL**: [https://zeta-one.vercel.app/](https://zeta-one.vercel.app/)
+- **Platform**: Vercel
+- **SEO Optimized**: Full meta tags, structured data, and sitemap
+- **Performance**: Optimized for Core Web Vitals
+
+### SEO Features in Production
+- **Dynamic Meta Tags**: Page-specific titles and descriptions
+- **Structured Data**: Product schema for rich search results
+- **Social Media**: Open Graph and Twitter Card optimization
+- **Sitemap**: Auto-generated XML sitemap with all product URLs
+- **Robots.txt**: Search engine crawling instructions
+```
