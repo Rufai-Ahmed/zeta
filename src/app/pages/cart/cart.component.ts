@@ -6,6 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { Observable } from 'rxjs';
 import { Cart } from '../../models/cart.interface';
 import { CartService } from '../../services/cart.service';
+import { SeoService } from '../../services/seo.service';
 import { ToastService } from '../../components/ui/toast/toast.service';
 import { ROUTE_URLS } from '../../shared/route-paths';
 import { AsyncPipe } from '@angular/common';
@@ -22,10 +23,12 @@ export class CartComponent implements OnInit {
   readonly ROUTE_URLS = ROUTE_URLS;
 
   private cartService = inject(CartService);
+  private seoService = inject(SeoService);
   private toastService = inject(ToastService);
 
   ngOnInit(): void {
     this.cart$ = this.cartService.cart$;
+    this.seoService.setCartSEO();
   }
 
   updateQuantity(productId: number, quantity: number): void {

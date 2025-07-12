@@ -3,9 +3,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { Observable } from 'rxjs';
+import { filter, tap } from 'rxjs/operators';
 import { Product } from '../../models/product.interface';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
+import { SeoService } from '../../services/seo.service';
 import { ToastService } from '../../components/ui/toast/toast.service';
 import { LoadingSpinnerComponent } from '../../components/ui/loading-spinner/loading-spinner.component';
 import { ErrorMessageComponent } from '../../components/ui/error-message/error-message.component';
@@ -36,12 +38,20 @@ export class ProductDetailComponent implements OnInit {
   private router = inject(Router);
   private productService = inject(ProductService);
   private cartService = inject(CartService);
+  private seoService = inject(SeoService);
   private toastService = inject(ToastService);
 
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
     if (slug) {
-      this.product$ = this.productService.getProductBySlug(slug);
+      this.product$ = this.productService.getProductBySlug(slug).pipe(
+        filter(product => product !== null),
+        tap(product => {
+          if (product) {
+            this.seoService.setProductSEO(product);
+          }
+        })
+      );
     }
   }
 

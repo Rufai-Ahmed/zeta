@@ -8,6 +8,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Cart } from '../../models/cart.interface';
 import { CartService } from '../../services/cart.service';
 import { StorageService } from '../../services/storage.service';
+import { SeoService } from '../../services/seo.service';
 import { ToastService } from '../../components/ui/toast/toast.service';
 import { ROUTE_URLS } from '../../shared/route-paths';
 import { AsyncPipe } from '@angular/common';
@@ -67,6 +68,7 @@ declare var PaystackPop: {
 export class CheckoutComponent extends DestroyAbleComponent implements OnInit {
   private cartService = inject(CartService);
   private storageService = inject(StorageService);
+  private seoService = inject(SeoService);
   private toastService = inject(ToastService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
@@ -86,6 +88,7 @@ export class CheckoutComponent extends DestroyAbleComponent implements OnInit {
 
   ngOnInit(): void {
     this.cart$ = this.cartService.cart$;
+    this.seoService.setCheckoutSEO();
   }
 
   placeOrder(): void {
@@ -103,7 +106,6 @@ export class CheckoutComponent extends DestroyAbleComponent implements OnInit {
         this.toastService.showToast('Cart is empty', 'error');
         return;
       }
-
 
       const amount = Math.round(cart.total * 100);
       if (!Number.isInteger(amount) || amount <= 0) {

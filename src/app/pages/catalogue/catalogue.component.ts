@@ -8,6 +8,7 @@ import { Observable, combineLatest } from 'rxjs';
 import { map, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Product } from '../../models/product.interface';
 import { ProductService } from '../../services/product.service';
+import { SeoService } from '../../services/seo.service';
 import { LoadingSpinnerComponent } from '../../components/ui/loading-spinner/loading-spinner.component';
 import { ErrorMessageComponent } from '../../components/ui/error-message/error-message.component';
 import { SearchFilterComponent } from '../../components/ui/search-filter/search-filter.component';
@@ -40,6 +41,7 @@ export class CatalogueComponent implements OnInit {
   readonly ROUTE_URLS = ROUTE_URLS;
 
   private productService = inject(ProductService);
+  private seoService = inject(SeoService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
@@ -48,6 +50,15 @@ export class CatalogueComponent implements OnInit {
     this.filteredProducts$ = this.getFilteredProducts();
     this.loading$ = this.productService.loading$;
     this.error$ = this.productService.error$;
+
+    this.seoService.updateSEO({
+      title: 'Products - Quality Electronics & Accessories | Zeta Commerce',
+      description:
+        'Browse our collection of quality electronics, accessories, and lifestyle products. Fast shipping and secure payments across Nigeria.',
+      keywords:
+        'electronics, accessories, lifestyle products, online shopping, nigeria, quality products',
+      canonicalUrl: 'https://zeta-commerce.com/products'
+    });
   }
 
   private getFilteredProducts(): Observable<Product[]> {
