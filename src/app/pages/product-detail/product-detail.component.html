@@ -1,0 +1,100 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <button (click)="goBack()" class="flex items-center text-blue-600 hover:text-blue-800 mb-6">
+    <mat-icon class="mr-2">arrow_back</mat-icon>
+    Back to Products
+  </button>
+
+  @if(product$ | async; as product) {
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="space-y-4">
+      <div class="aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden">
+        <img [src]="product.image" [alt]="product.name" class="w-full h-full object-cover" />
+      </div>
+    </div>
+    <div class="space-y-6">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ product.name }}</h1>
+        <div class="flex items-center mb-4">
+          <div class="flex text-yellow-400 text-lg">
+            @for(star of [1,2,3,4,5]; track $index) {
+            <mat-icon>{{ star <= product.rating ? 'star' : 'star_border' }}</mat-icon>
+            }
+          </div>
+          <span class="ml-2 text-gray-600">({{ product.reviews }} reviews)</span>
+        </div>
+        <p class="text-4xl font-bold text-gray-900 mb-4">₦{{ product.price.toLocaleString() }}</p>
+        <p class="text-gray-600 mb-6">{{ product.description }}</p>
+      </div>
+      @if(product.features && product.features.length > 0) {
+      <h3 class="text-lg font-semibold text-gray-900 mb-3">Features</h3>
+      <ul class="space-y-2">
+        @for(feature of product.features; track $index) {
+        <li class="flex items-start">
+          <mat-icon class="text-green-500 mr-2 mt-0.5 flex-shrink-0">check_circle</mat-icon>
+          <span class="text-gray-700">{{ feature }}</span>
+        </li>
+        }
+      </ul>
+      }
+      <div class="border-t pt-6">
+        <div class="flex items-center space-x-4 mb-4">
+          <label class="text-sm font-medium text-gray-700">Quantity:</label>
+          <div class="flex items-center border rounded-md">
+            <button
+              (click)="decreaseQuantity()"
+              [disabled]="quantity <= 1"
+              class="px-3 py-1 text-gray-600 hover:text-gray-800 disabled:opacity-50"
+            >
+              -
+            </button>
+            <span class="px-4 py-1 border-x">{{ quantity }}</span>
+            <button
+              (click)="increaseQuantity()"
+              class="px-3 py-1 text-gray-600 hover:text-gray-800"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <button
+            (click)="addToCart(product)"
+            [disabled]="!product.inStock"
+            class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+          >
+            @if(product.inStock) {Add to Cart} @if(!product.inStock) {Out of Stock}
+          </button>
+        </div>
+        <div class="mt-4">
+          @if(product.inStock) {
+          <span
+            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800"
+          >
+            <mat-icon class="mr-1">check_circle</mat-icon>
+            In Stock
+          </span>
+          } @if(!product.inStock) {
+          <span
+            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800"
+          >
+            <mat-icon class="mr-1">cancel</mat-icon>
+            Out of Stock
+          </span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  } @if((product$ | async) === null || (product$ | async) === undefined) {
+  <div class="text-center py-12">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Product Not Found</h2>
+    <p class="text-gray-600 mb-6">The product you're looking for doesn't exist.</p>
+    <button
+      (click)="goBack()"
+      class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+    >
+      Back to Products
+    </button>
+  </div>
+  }
+</div>

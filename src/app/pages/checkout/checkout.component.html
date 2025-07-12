@@ -1,0 +1,115 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">Checkout</h1>
+  </div>
+
+  @if(cart$ | async; as cart) {
+  <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+    <div class="lg:col-span-8">
+      <div class="bg-white rounded-lg shadow-sm border p-6">
+        <h2 class="text-lg font-semibold text-gray-900 mb-6">Shipping Information</h2>
+        <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()" class="space-y-6">
+          <div class="grid grid-cols-1 mb-6 md:grid-cols-2 gap-6">
+            <zt-input
+              label="First Name *"
+              type="text"
+              placeholder="First Name"
+              formControlName="firstName"
+            ></zt-input>
+            <zt-input
+              label="Last Name *"
+              type="text"
+              placeholder="Last Name"
+              formControlName="lastName"
+            ></zt-input>
+            <zt-input
+              label="Email Address *"
+              type="email"
+              placeholder="Email Address"
+              formControlName="email"
+            ></zt-input>
+            <zt-input
+              label="Phone Number"
+              type="tel"
+              placeholder="Phone Number"
+              formControlName="phone"
+            ></zt-input>
+            <zt-input
+              label="Address *"
+              type="text"
+              placeholder="Address"
+              formControlName="address"
+            ></zt-input>
+            <zt-input
+              label="City *"
+              type="text"
+              placeholder="City"
+              formControlName="city"
+            ></zt-input>
+            <zt-input
+              label="ZIP Code *"
+              type="text"
+              placeholder="ZIP Code"
+              formControlName="zipCode"
+            ></zt-input>
+            <zt-input
+              label="Country"
+              type="text"
+              placeholder="Country"
+              formControlName="country"
+            ></zt-input>
+          </div>
+          <zt-button
+            color="primary"
+            type="submit"
+            [disabled]="isProcessing"
+            [loading]="isProcessing"
+            class="w-full mt-4"
+          >
+            Pay with Paystack
+          </zt-button>
+        </form>
+      </div>
+    </div>
+    <div class="lg:col-span-4 mt-6 lg:mt-0">
+      <div class="bg-white rounded-lg shadow-sm border p-6">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Order Summary</h2>
+        <div class="space-y-3 mb-6">
+          @for(item of cart.items; track item.product.id) {
+          <div class="flex items-center space-x-3">
+            <img
+              [src]="item.product.image"
+              [alt]="item.product.name"
+              class="w-12 h-12 object-cover rounded"
+            />
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-gray-900 truncate">{{ item.product.name }}</p>
+              <p class="text-sm text-gray-500">Qty: {{ item.quantity }}</p>
+            </div>
+            <p class="text-sm font-medium text-gray-900">
+              ₦{{ (item.product.price * item.quantity).toLocaleString() }}
+            </p>
+          </div>
+          }
+        </div>
+        <div class="border-t pt-4 space-y-3">
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">Subtotal</span>
+            <span class="font-medium">₦{{ cart.subtotal.toLocaleString() }}</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">Shipping</span>
+            <span class="font-medium">Free</span>
+          </div>
+          <div class="border-t pt-3">
+            <div class="flex justify-between text-base font-medium">
+              <span>Total</span>
+              <span>₦{{ cart.total.toLocaleString() }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>
